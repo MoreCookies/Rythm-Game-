@@ -47,7 +47,6 @@ function preload() {
 	magentaNote = loadImage("Notes/MagentaNote.png")
   frenzyNote = loadImage("Notes/FrenzyNote.png")
 	orangeNote = loadImage("Notes/OrangeNote.png")
-  pressedNote = loadImage("Notes/PressedNote")
 }
 
 function setup() {
@@ -64,12 +63,12 @@ function draw() {
   fill(255, 204, 100);
   //notes (not really)
   for(var i = 0; i < 4; i++) {
-    line(circleX+(35*i), 0, circleX+(40*i), windowHeight-20)
+    line(circleX+(40*i), 0, circleX+(40*i), windowHeight-20)
     image(noteColour, circleX+(40*i), circleY, 30)
   }
   //player note control press pog score generator epicness idk 
   for(var l = 0; l < 4; l++) {
-    image(noteColour, circleX+(35*l), windowHeight-100, 35, 35)
+    image(noteColour, circleX+(40*l), windowHeight-100, 35, 35)
   }
   circleY += 5
   //Teleports notes back to the top of the screen
