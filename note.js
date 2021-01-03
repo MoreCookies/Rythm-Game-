@@ -12,8 +12,8 @@ class note {
     /*
     Contents:
     -change the y position of the circle or note
-    
     */
+    
   }
   
   detect(currentTime) {
