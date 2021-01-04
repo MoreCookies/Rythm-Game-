@@ -37,10 +37,10 @@ let aPressed = false;
 let sPressed = false;
 let dPressed = false;
 let fPressed = false;
-let left = "a";
-let leftmiddle = "s";
-let rightmiddle = "d";
-let right = "f";
+let left = 65; //a
+let leftmiddle = 83; //s
+let rightmiddle = 68; //d
+let right = 70; //f
 let lineColour;
 let asgore;
 let winHeight = 750;
@@ -105,11 +105,13 @@ function preload() {
 	yellowNote = loadImage("Notes/YellowNote.png", yellowNoteConsole);
 	pressedNote = loadImage("Notes/PressedNote.png", pressedNoteConsole);
   img = loadImage("Images/LineTop.jpg", lineTopScale);
+  
 	//asgore = loadSound("asgore.mp3", playAsgore);
 }
 
 function setup() {
 	//framesPerSecond(fps);
+  doggo = loadImage("Images/doggo.jpg")
 	createCanvas(winWidth, winHeight);
 	circleX = windowWidth / 2
 	colorMode(HSB);
@@ -137,18 +139,20 @@ function setup() {
 
 function draw() {
   //BOX
+  //package length object package getMatchedCSSRules SVGPathSegCurvetoQuadraticSmoothRel webkitConvertPointFromNodeToPage frenzyNoteConsole getMatchedCSSRules HTMLAllCollection encodeURIComponent webkitConvertPointFromNodeToPage SVGPathSegCurvetoQuadraticSmoothRel VideoPlaybackQuality break PressedNoteLoaded webkitConvertPointFromNodeToPage pageYOffset
   
   //image(pogbox, (circleX*1.5), 125, 130, 50);
 	//buttons for customizing note colours
-	fill(255)
-	rect(100, winHeight - 100, 500, 100);
+	background(doggo);
 	buttonRed.mousePressed(colourR);
 	buttonMagenta.mousePressed(colourM);
 	buttonOrange.mousePressed(colourO);
 	buttonBlue.mousePressed(colourB);
 	buttonYellow.mousePressed(colourY);
 	// Runs in a loop
-	background(50);
+	
+  fill("cyan")
+  rect(0, 0, winWidth, 125);
 	//asgore = loadSound("asgore.mp3", playAsgore); 
 	//player note pressing things
 	fill(255, 204, 100);
@@ -194,22 +198,22 @@ function draw() {
 	}
 
 	//player controls alpha
-	if (keyIsDown(65)) {
+	if (keyIsDown(left)) {
 		aPressed = true;
 	} else {
 		aPressed = false;
 	}
-	if (keyIsDown(83)) {
+	if (keyIsDown(leftmiddle)) {
 		sPressed = true;
 	} else {
 		sPressed = false;
 	}
-	if (keyIsDown(68)) {
+	if (keyIsDown(rightmiddle)) {
 		dPressed = true;
 	} else {
 		dPressed = false;
 	}
-	if (keyIsDown(70)) {
+	if (keyIsDown(right)) {
 		fPressed = true;
 	} else {
 		fPressed = false;
