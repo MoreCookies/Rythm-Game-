@@ -1,11 +1,14 @@
 class note {
-  constructor(track, time) {
+  constructor(track, time, currentSong) {
     this.track = track;
     this.time = time;
   }
   
   display() {
     //draw the note with the updated positions
+    if(currentSong.currentTime()-1.05 >= this.time) {
+      
+    }
   }
   
   update() {
