@@ -30,8 +30,6 @@ suggestions
 */
 //variables
 let fps = 60;
-let circleX = 30;
-let circleY = 125;
 let colour = 0;
 let goingBack = false;
 let noteColour;
@@ -39,11 +37,17 @@ let aPressed = false;
 let sPressed = false;
 let dPressed = false;
 let fPressed = false;
+let left = "a";
+let leftmiddle = "s";
+let rightmiddle = "d";
+let right = "f";
 let lineColour;
 let asgore;
 let winHeight = 750;
 let winWidth = 1150;
 let score = 0;
+let circleX = winWidth/2;
+let circleY = 125;
 
 //functions
 function colourR() {
@@ -89,8 +93,8 @@ function pressedNoteConsole() {
 }
 
 function lineTopScale() {
-	lineTop.resize(150,0)
-}
+	img.resize(200,200)
+} 
 
 function preload() {
 	redNote = loadImage("Notes/RedNote.png", redNoteConsole);
@@ -100,7 +104,7 @@ function preload() {
 	orangeNote = loadImage("Notes/OrangeNote.png", orangeNoteConsole);
 	yellowNote = loadImage("Notes/YellowNote.png", yellowNoteConsole);
 	pressedNote = loadImage("Notes/PressedNote.png", pressedNoteConsole);
-  lineTop = loadImage("Images/LineTop.png", lineTopScale);
+  img = loadImage("Images/LineTop.jpg", lineTopScale);
 	//asgore = loadSound("asgore.mp3", playAsgore);
 }
 
@@ -149,7 +153,6 @@ function draw() {
 	//player note pressing things
 	fill(255, 204, 100);
 	//notes (not really)
-  image(lineTop, circleX*1.25, 80, 120,75);
 	
 	for (var i = 0; i < 4; i++) {
 		stroke(lineColour)
@@ -211,6 +214,7 @@ function draw() {
 	} else {
 		fPressed = false;
 	}
+	  image(img, 360, 82, 170,85);
 }
 /*
 function playAsgore() {
