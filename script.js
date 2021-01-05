@@ -96,6 +96,9 @@ function lineTopScale() {
 	img.resize(200,200)
 } 
 
+function scaleBackground() {
+  gameBackground.resize(winWidth, winHeight);
+}
 function preload() {
 	redNote = loadImage("Notes/RedNote.png", redNoteConsole);
 	blueNote = loadImage("Notes/BlueNote.png", blueNoteConsole);
@@ -105,7 +108,7 @@ function preload() {
 	yellowNote = loadImage("Notes/YellowNote.png", yellowNoteConsole);
 	pressedNote = loadImage("Notes/PressedNote.png", pressedNoteConsole);
   img = loadImage("Images/LineTop.jpg", lineTopScale);
-  
+  gameBackground = loadImage("Images/gameBackgroundPOG.jpg", scaleBackground);
 	//asgore = loadSound("asgore.mp3", playAsgore);
 }
 
@@ -143,7 +146,9 @@ function draw() {
   
   //image(pogbox, (circleX*1.5), 125, 130, 50);
 	//buttons for customizing note colours
-	background(doggo);
+  imageMode(CORNER);
+	background(gameBackground);
+  imageMode(CENTER);
 	buttonRed.mousePressed(colourR);
 	buttonMagenta.mousePressed(colourM);
 	buttonOrange.mousePressed(colourO);
