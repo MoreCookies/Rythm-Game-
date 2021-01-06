@@ -202,7 +202,6 @@ function playAsgore() {
   asgore.volume(1)
   asgore.autoplay(true);
 }
-
 /*
 these are some good chicky nuggets
 these are some good chicky nuggets
