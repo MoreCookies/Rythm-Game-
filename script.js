@@ -18,7 +18,34 @@ let winWidth = 1150;
 let score = 0;
 let circleX = winWidth  /  2;
 let circleY = 125;
+let songPlaying = false;
+class imgButton {
+  constructor(img, xPos, yPos) {
+    this.dispImg = img;
+    this.xPos = xPos;
+    this.yPos = yPos;
+  }
 
+  display() {
+    stroke(255);
+    if(this.isOver(mouseX, mouseY)) {
+      tint(225, 200, 0);
+    } else {
+      noTint();
+    }
+    image(this.dispImg, this.xPos, this.yPos);
+  }
+
+  isOver(xPos, yPos) {
+    
+    if(xPos >= this.xPos-1 && xPos <= this.xPos+this.dispImg.width && yPos >= this.yPos-1 && yPos <= this.yPos+this.dispImg.height && mouseIsPressed) {
+      return true
+    } else {
+      return false
+    }
+    
+  }
+}
 //functions
 function colourR() {
   noteColour = redNote
@@ -42,7 +69,6 @@ function colourY() {
 }
 function colourLB() {
 	noteColour = lightBlueNote;
-	lineColour = "lightBlue"
 }
 
 function lineTopScale() {
@@ -51,6 +77,29 @@ function lineTopScale() {
 
 function scaleBackground() {
 	gameBackground.resize(winWidth, winHeight);
+}
+
+//Asgore
+function buttonAsgore() {
+  console.log("loading asgore")
+  let asgore = loadSound("Songs/asgore.mp3", playAsgore);
+}
+
+function playAsgore() {
+  console.log("asgorePlaying")
+  asgore.play();
+}
+function asgoreSong() {
+	console.log("asgorePicLoaded")
+}
+//GasGasGas
+function buttonGGG() {
+	console.log("loading GasGasGas")
+	gasGasGas = loadSound("Songs/GasGasGas.mp3", playGGG)
+}
+function playGGG(){
+	console.log("GasGasGasPlaying")
+	gasGasGas.play()
 }
 function preload() {
   soundFormats('mp3')
@@ -91,11 +140,12 @@ function setup() {
   noteSpeedSlider = createSlider(1, 25, 5)
   noteSpeedSlider.position(12, 12)
   //button test
-	asgoreButton = createButton("Play Asgore");
+  asgoreButton2 = new imgButton(asgoreSong, 100, 100);
 }
 
 function draw() {
   //buttons for customizing note colours
+	
 	imageMode(CORNER);
   background(gameBackground);
 	imageMode(CENTER);
@@ -105,9 +155,8 @@ function draw() {
   buttonBlue.mousePressed(colourB);
   buttonYellow.mousePressed(colourY);
 	buttonLBlue.mousePressed(colourLB);
-  asgoreButton.mousePressed(buttonAsgore)
   // Runs in a loop
-
+  
 	fill("cyan")
 	rect(0, 0, winWidth, 125);
   //player note pressing things
@@ -119,8 +168,6 @@ function draw() {
     line(circleX + (40 * i), 125, circleX + (40 * i), winHeight)
     image(noteColour, circleX + (40 * i), circleY, 30)
   }
-
-
 
   //player note control press pog score generator epicness idk 
   for (var l = 0; l < 4; l++) {
@@ -172,16 +219,12 @@ function draw() {
   } else {
     fPressed = false;
   }
-}
-function buttonAsgore() {
-  console.log("loading asgore")
-  asgore = loadSound("Songs/asgore.mp3", playAsgore);
-}
-
-function playAsgore() {
-  console.log("asgorePlaying")
-  asgore.play();
-}
-function asgoreSong() {
-	console.log("asgorePicLoaded")
+  if(asgoreButton2.isOver(mouseX, mouseY) && songPlaying == false) {
+    songPlaying = true;
+    buttonAsgore();
+  }
+  if(isPlaying() == false) {
+    songPlaying = false;
+  }
+  asgoreButton2.display();
 }
