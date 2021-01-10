@@ -19,6 +19,7 @@ let score = 0;
 let circleX = winWidth  /  2;
 let circleY = 125;
 let songPlaying = false;
+let asgore1;
 class imgButton {
   constructor(img, xPos, yPos) {
     this.dispImg = img;
@@ -82,12 +83,11 @@ function scaleBackground() {
 //Asgore
 function buttonAsgore() {
   console.log("loading asgore")
-  let asgore = loadSound("Songs/asgore.mp3", playAsgore);
 }
 
 function playAsgore() {
   console.log("asgorePlaying")
-  asgore.play();
+  asgore1.play();
 }
 function asgoreSong() {
 	console.log("asgorePicLoaded")
@@ -102,7 +102,6 @@ function playGGG(){
 	gasGasGas.play()
 }
 function preload() {
-  soundFormats('mp3')
   redNote = loadImage("Notes/RedNote.png");
   blueNote = loadImage("Notes/BlueNote.png", );
   magentaNote = loadImage("Notes/MagentaNote.png");
@@ -221,9 +220,11 @@ function draw() {
   }
   if(asgoreButton2.isOver(mouseX, mouseY) && songPlaying == false) {
     songPlaying = true;
-    buttonAsgore();
+    asgore1 = loadSound("Songs/asgore.mp3", playAsgore);
   }
-  if(isPlaying() == false) {
+  if(asgore1.isPlaying()) {
+    songPlaying = true;
+  } else {
     songPlaying = false;
   }
   asgoreButton2.display();
