@@ -1,3 +1,4 @@
+/*
 let fps = 60;
 let colour = 0;
 let goingBack = false;
@@ -63,10 +64,10 @@ class note {
   }
   
   update() {
-    /*
+    
     Contents:
     -change the y position of the circle or note
-    */
+    
     
   }
   
@@ -262,3 +263,4 @@ function asgorePlay() {
 		asgore.play();
 	}
 }
+*/
